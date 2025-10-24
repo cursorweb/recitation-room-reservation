@@ -83,6 +83,9 @@ void RoomReservation::MoveHotels(int new_room_capacity) {
   for (int i = 0; i < resc; i++) {
     nr[i] = new std::string[new_room_capacity];
     for (int j = 0; j < new_room_capacity; j++) {
+      if (index >= athlete_count_) {
+        break;
+      }
       int row = index / room_capacity_;
       int col = index % room_capacity_;
       nr[i][j] = rooms_[row][col];
@@ -114,16 +117,10 @@ RoomReservation::RoomReservation(const std::string& filename,
     AddTeamMember(student);
   }
 }
-RoomReservation::~RoomReservation() {
-  Clear();
-}
+RoomReservation::~RoomReservation() { Clear(); }
 
-int RoomReservation::RoomsReserved() const {
-  return rooms_reserved_;
-}
-int RoomReservation::RoomCapacity() const {
-  return room_capacity_;
-}
+int RoomReservation::RoomsReserved() const { return rooms_reserved_; }
+int RoomReservation::RoomCapacity() const { return room_capacity_; }
 
 void RoomReservation::Clear() {
   if (rooms_ == nullptr) return;
@@ -135,7 +132,6 @@ void RoomReservation::Clear() {
   rooms_reserved_ = 0;
   athlete_count_ = 0;
 }
-
 
 std::string* RoomReservation::GetRoom(int room_number) {
   if (room_number < 0 || room_number >= rooms_reserved_ || rooms_ == nullptr) {

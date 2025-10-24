@@ -21,10 +21,17 @@ int main() {
   // std::cout << "\nMove back to the original hotel with room capacity 2:" <<
   // std::endl; tennis_team.MoveHotels(2); tennis_team.Print();
 
-  RoomReservation rr("", 3);
+  RoomReservation rr(3);
 
   rr.AddTeamMember("Kida Ferrari");
-  rr.RemoveTeamMember("Kida Ferrari");
+  rr.AddTeamMember("Megan Heuser");
+  rr.AddTeamMember("Ariel Madatali");
+
+  rr.AddTeamMember("Violeta Martinez");
+  rr.AddTeamMember("Rosie Seccia");
+  rr.AddTeamMember("Alice Xu");
+
+  rr.MoveHotels(4);
   rr.Print();
 
   return 0;
