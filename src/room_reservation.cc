@@ -25,6 +25,17 @@ RoomReservation::RoomReservation(const std::string& filename,
   }
 }
 RoomReservation::~RoomReservation() {
+  Clear();
+}
+
+int RoomReservation::RoomsReserved() const {
+  return rooms_reserved_;
+}
+int RoomReservation::RoomCapacity() const {
+  return room_capacity_;
+}
+
+void RoomReservation::Clear() {
   if (rooms_ == nullptr) return;
   for (int i = 0; i < rooms_reserved_; i++) {
     delete[] rooms_[i];
@@ -34,6 +45,7 @@ RoomReservation::~RoomReservation() {
   rooms_reserved_ = 0;
   athlete_count_ = 0;
 }
+
 
 std::string* RoomReservation::GetRoom(int room_number) {
   if (room_number < 0 || room_number >= rooms_reserved_ || rooms_ == nullptr) {
